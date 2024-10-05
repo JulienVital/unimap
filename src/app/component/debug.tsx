@@ -2,10 +2,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import floorPlan from "@/app/image.svg"; // Assurez-vous que le chemin d'importation est correct
-import lesnodes from "./node.json"; // Assurez-vous que le chemin d'importation est correct
+import {graph } from "./node"; // Assurez-vous que le chemin d'importation est correct
 import { drawRectangle } from "../functions/DrawClassRoom";
 
-console.log(lesnodes);
 const FloorPlanCanvas: React.FC = () => {
   // Références pour le canevas et l'image
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -39,25 +38,26 @@ const FloorPlanCanvas: React.FC = () => {
           22 * (canvasSize.width / 100),
           16 * (canvasSize.height / 100)
         ); // Point A
-        for (const currentNode in lesnodes.point) {
+        for (const currentNode in graph.point) {
           const top =
-            lesnodes.point[currentNode].position.top *
+            graph.point[currentNode].position.top *
             (canvasSize.height / 100);
           const left =
-            lesnodes.point[currentNode].position.left *
+            graph.point[currentNode].position.left *
             (canvasSize.width / 100);
           ctx.lineTo(left, top); // Point B
         }
         ctx.strokeStyle = "red"; // Couleur du tracé
         ctx.lineWidth = 1; // Épaisseur du trait
         ctx.stroke();
-        for (const currentNode in lesnodes.classroom) {
+        for (const currentNode in graph.classroom) {
+            console.log(currentNode)
             drawRectangle(
             ctx,
-            lesnodes.classroom[currentNode].size.left,
-            lesnodes.classroom[currentNode].size.top,
-            lesnodes.classroom[currentNode].size.width,
-            lesnodes.classroom[currentNode].size.height,
+            graph.classroom[currentNode].size.left,
+            graph.classroom[currentNode].size.top,
+            graph.classroom[currentNode].size.width,
+            graph.classroom[currentNode].size.height,
             canvasSize.width,
             canvasSize.height
           );
@@ -66,12 +66,12 @@ const FloorPlanCanvas: React.FC = () => {
 
         ctx.font = "15px Arial";
         ctx.fillStyle = "black";
-        for (const currentNode in lesnodes.point) {
+        for (const currentNode in graph.point) {
           const top =
-            lesnodes.point[currentNode].position.top *
+            graph.point[currentNode].position.top *
             (canvasSize.height / 100);
           const left =
-            lesnodes.point[currentNode].position.left *
+            graph.point[currentNode].position.left *
             (canvasSize.width / 100);
           ctx.fillText(currentNode, left, top);
         }
