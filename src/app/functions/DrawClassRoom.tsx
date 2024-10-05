@@ -1,5 +1,5 @@
 export const  drawRectangle = (
-    ctx: { beginPath: () => void; rect: (arg0: number, arg1: number, arg2: number, arg3: number) => void; fillStyle: string; fill: () => void; strokeStyle: string; lineWidth: number; stroke: () => void; },
+    ctx: CanvasRenderingContext2D,
     xPercent: number,
     yPercent: number,
     widthPercent: number,

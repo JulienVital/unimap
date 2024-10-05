@@ -51,7 +51,6 @@ const FloorPlanCanvas: React.FC = () => {
         ctx.lineWidth = 1; // Épaisseur du trait
         ctx.stroke();
         for (const currentNode in graph.classroom) {
-            console.log(currentNode)
             drawRectangle(
             ctx,
             graph.classroom[currentNode].size.left,
