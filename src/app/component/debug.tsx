@@ -4,6 +4,7 @@ import Image from "next/image";
 import floorPlan from "@/app/image.svg"; // Assurez-vous que le chemin d'importation est correct
 import { graph } from "./node"; // Assurez-vous que le chemin d'importation est correct
 import { drawRectangle } from "../functions/DrawClassRoom";
+import { handleCanvasClick } from "../functions/debug/utils";
 
 // Fonction pour ajouter un délai
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -113,14 +114,7 @@ const FloorPlanCanvas: React.FC = () => {
     }
   };
 
-  const handleCanvasClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
-    const rect = canvasRef.current?.getBoundingClientRect();
-    if (rect) {
-      const x = ((event.clientX - rect.left) / rect.width) * 100;
-      const y = ((event.clientY - rect.top) / rect.height) * 100;
-      console.log(`Coordonnées: left: ${x.toFixed(2)}%, top: ${y.toFixed(2)}%`);
-    }
-  };
+
 
   return (
     <div
@@ -144,7 +138,7 @@ const FloorPlanCanvas: React.FC = () => {
       />
       <canvas
         ref={canvasRef}
-        onClick={handleCanvasClick}
+        onClick={(event) => handleCanvasClick(event, canvasRef)}
         style={{
           display: "block",
           maxWidth: "100%",
