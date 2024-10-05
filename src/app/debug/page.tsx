@@ -1,10 +1,9 @@
-import Plan from "@/app/component/plan"
+import Debug from "@/app/component/debug"
 export default function Home() {
   return (
     <>
       <main >
-        <Plan/>
-
+        <Debug/>
       </main>
       <footer >
       </footer>
