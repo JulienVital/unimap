@@ -2,83 +2,89 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import floorPlan from "@/app/image.svg"; // Assurez-vous que le chemin d'importation est correct
-import {graph } from "./node"; // Assurez-vous que le chemin d'importation est correct
+import { graph } from "./node"; // Assurez-vous que le chemin d'importation est correct
 import { drawRectangle } from "../functions/DrawClassRoom";
 
+// Fonction pour ajouter un délai
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const FloorPlanCanvas: React.FC = () => {
-  // Références pour le canevas et l'image
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const [imgLoaded, setImgLoaded] = useState<boolean>(false);
-
-  // État pour les dimensions de l'image
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
 
-  // Utiliser useEffect pour dessiner sur le canevas une fois l'image chargée
+  // Fonction principale de dessin asynchrone avec délai
+  const drawWithDelay = async (ctx: CanvasRenderingContext2D) => {
+    // Effacer le canevas
+    ctx.clearRect(0, 0, canvasRef.current!.width, canvasRef.current!.height);
+
+    // Dessiner l'image
+    ctx.drawImage(imgRef.current!, 0, 0, canvasSize.width, canvasSize.height);
+
+    // Dessiner un exemple de tracé
+    ctx.beginPath();
+    ctx.moveTo(
+      22 * (canvasSize.width / 100),
+      16 * (canvasSize.height / 100)
+    ); // Point A
+
+    // Dessin des points avec un délai
+    for (const currentNode in graph.point) {
+      const top = graph.point[currentNode].position.top * (canvasSize.height / 100);
+      const left = graph.point[currentNode].position.left * (canvasSize.width / 100);
+
+      // Dessiner une ligne vers le prochain point
+      ctx.lineTo(left, top);
+      ctx.strokeStyle = "red";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Attendre 500ms avant de continuer
+      await sleep(500);
+    }
+
+    // Dessiner les rectangles des salles avec délai
+    for (const currentNode in graph.classroom) {
+      drawRectangle(
+        ctx,
+        graph.classroom[currentNode].size.left,
+        graph.classroom[currentNode].size.top,
+        graph.classroom[currentNode].size.width,
+        graph.classroom[currentNode].size.height,
+        canvasSize.width,
+        canvasSize.height
+      );
+      
+      // Attendre 500ms avant de continuer
+      await sleep(500);
+    }
+
+    // Dessiner le texte avec un délai
+    ctx.font = "15px Arial";
+    ctx.fillStyle = "black";
+    for (const currentNode in graph.point) {
+      const top = graph.point[currentNode].position.top * (canvasSize.height / 100);
+      const left = graph.point[currentNode].position.left * (canvasSize.width / 100);
+
+      ctx.fillText(currentNode, left, top);
+
+      // Attendre 500ms avant de continuer
+      await sleep(500);
+    }
+  };
+
   useEffect(() => {
     if (imgLoaded && canvasRef.current && imgRef.current) {
       const ctx = canvasRef.current.getContext("2d");
 
       if (ctx) {
-        // Effacer le canevas
-        ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-
-        // Dessiner l'image en maintenant les proportions
-        ctx.drawImage(
-          imgRef.current,
-          0,
-          0,
-          canvasSize.width,
-          canvasSize.height
-        );
-
-        // Dessiner un exemple de tracé
-        ctx.beginPath();
-        ctx.moveTo(
-          22 * (canvasSize.width / 100),
-          16 * (canvasSize.height / 100)
-        ); // Point A
-        for (const currentNode in graph.point) {
-          const top =
-            graph.point[currentNode].position.top *
-            (canvasSize.height / 100);
-          const left =
-            graph.point[currentNode].position.left *
-            (canvasSize.width / 100);
-          ctx.lineTo(left, top); // Point B
-        }
-        ctx.strokeStyle = "red"; // Couleur du tracé
-        ctx.lineWidth = 1; // Épaisseur du trait
-        ctx.stroke();
-        for (const currentNode in graph.classroom) {
-            drawRectangle(
-            ctx,
-            graph.classroom[currentNode].size.left,
-            graph.classroom[currentNode].size.top,
-            graph.classroom[currentNode].size.width,
-            graph.classroom[currentNode].size.height,
-            canvasSize.width,
-            canvasSize.height
-          );
-          // ctx.lineTo(left, top); // Point B
-        }
-
-        ctx.font = "15px Arial";
-        ctx.fillStyle = "black";
-        for (const currentNode in graph.point) {
-          const top =
-            graph.point[currentNode].position.top *
-            (canvasSize.height / 100);
-          const left =
-            graph.point[currentNode].position.left *
-            (canvasSize.width / 100);
-          ctx.fillText(currentNode, left, top);
-        }
+        // Lancer le dessin avec des délais
+        drawWithDelay(ctx);
       }
     }
-  }, [imgLoaded, canvasSize]); // Dépendance sur imgLoaded et la taille du canevas
+  }, [imgLoaded, canvasSize]);
 
-  // Calculer les dimensions du canevas pour maintenir le ratio de l'image
   const handleImageLoad = () => {
     const canvas = canvasRef.current;
     const img = imgRef.current;
@@ -99,22 +105,20 @@ const FloorPlanCanvas: React.FC = () => {
         newHeight = newWidth / imageRatio;
       }
 
-      // Ajuster les dimensions du canevas
       setCanvasSize({ width: newWidth, height: newHeight });
       canvas.width = newWidth;
       canvas.height = newHeight;
 
-      setImgLoaded(true); // Indique que l'image est chargée
+      setImgLoaded(true);
     }
   };
 
-  // Fonction pour gérer le clic sur le canevas
   const handleCanvasClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
     const rect = canvasRef.current?.getBoundingClientRect();
     if (rect) {
-      const x = ((event.clientX - rect.left) / rect.width) * 100; // Calculer le pourcentage x
-      const y = ((event.clientY - rect.top) / rect.height) * 100; // Calculer le pourcentage y
-      console.log(`Coordonnées: left: ${x.toFixed(2)}%, top: ${y.toFixed(2)}%`); // Afficher les coordonnées en console
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      console.log(`Coordonnées: left: ${x.toFixed(2)}%, top: ${y.toFixed(2)}%`);
     }
   };
 
@@ -130,24 +134,23 @@ const FloorPlanCanvas: React.FC = () => {
         alignItems: "center",
       }}
     >
-      {/* Image pour charger le plan d'étage */}
       <Image
         ref={imgRef}
         src={floorPlan}
         alt="Plan d'étage"
         priority
-        style={{ display: "none" }} // Cacher l'image
-        onLoad={handleImageLoad} // Appeler la fonction lorsque l'image est chargée
+        style={{ display: "none" }}
+        onLoad={handleImageLoad}
       />
       <canvas
         ref={canvasRef}
-        onClick={handleCanvasClick} // Ajouter le gestionnaire de clic
+        onClick={handleCanvasClick}
         style={{
           display: "block",
           maxWidth: "100%",
           maxHeight: "100%",
           objectFit: "contain",
-        }} // Ajuster le canevas pour qu'il ne dépasse pas les limites de l'écran
+        }}
       />
     </div>
   );
