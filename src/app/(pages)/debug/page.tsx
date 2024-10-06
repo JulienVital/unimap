@@ -37,7 +37,9 @@ export default function DebugPage() {
       }
       currentNode.drawPosition(ctx,canvasSize, true )
     })
-
+      graph.edge.forEach(element => {
+        element.draw(ctx, canvasSize)
+      });
   };
   // Gestionnaire d'événement de clic
   const handleCanvasClickInternal = (

@@ -10,6 +10,7 @@ export interface SizeNode {
 export interface Node {
   position: Position;
   id: string;
+  type: 'classroom'|'door'|'hall'
   size?: SizeNode;
   drawPosition : (
     ctx: CanvasRenderingContext2D,
@@ -32,6 +33,9 @@ export interface ClassroomInterface extends Node {
 export interface DoorInterface extends Node {
   type: "door";
 }
+export interface HallInterface extends Node {
+  type: "hall";
+}
 // Interface pour la position d'un noeud (point)
 export interface Position {
   top: number;
@@ -40,7 +44,7 @@ export interface Position {
 
 // Structure principale du graphe
 export interface GraphInterface {
-  node: (ClassroomInterface|DoorInterface)[];
+  node: (ClassroomInterface|DoorInterface|HallInterface)[];
 }
 
 export interface GraphInterfaceRaw {
@@ -51,6 +55,10 @@ export interface EdgeInterface {
   from: Node;
   to: Node;
   weight: number;
+  draw : (
+    ctx: CanvasRenderingContext2D,
+    canvasSize: canvaSizeInterface,
+  )=>void
 }
 export interface RawEdge {
   from: string;

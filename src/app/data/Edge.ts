@@ -1,4 +1,4 @@
-import { canvaSizeInterface } from "../functions/drawNode";
+import { canvaSizeInterface, drawLine } from "../functions/drawNode";
 import { EdgeInterface, Node } from "./data";
 
 export class Edge implements EdgeInterface {
@@ -10,11 +10,10 @@ export class Edge implements EdgeInterface {
     this.to = to;
     this.weight = weight;
   }
-//   drawLine = (
-//     ctx: CanvasRenderingContext2D,
-//     canvasSize: canvaSizeInterface,
-//     debug?: boolean
-//   ) => {
-//     drawLine(ctx, this, canvasSize);
-//   };
+  draw = (
+    ctx: CanvasRenderingContext2D,
+    canvasSize: canvaSizeInterface,
+  ) => {
+    drawLine(ctx, this.from, this.to, canvasSize);
+  };
 }

@@ -117,7 +117,7 @@
         "type": "classroom",
         "position": {
           "top": 85,
-          "left": 63
+          "left": 65
         },
         "id": "SD353",
         "size": {
@@ -141,7 +141,54 @@
           "height": 23.5
         }
       },
-            
+      "hall1":{
+        "id": "hall1",
+        "type": "hall",
+        "position": {
+          "left": 62.75,
+          "top": 64.62
+        }
+      },     
+      "hall2":{
+        "id": "hall2",
+        "type": "hall",
+        "position": {
+          "left": 56.59,
+          "top": 64.62
+        }
+      },
+      "hall3":{
+        "id": "hall3",
+        "type": "hall",
+        "position": {
+          "left": 39.27,
+          "top": 64.62
+        }
+      },    
+      "hall4":{
+        "id": "hall4",
+        "type": "hall",
+        "position": {
+          "left": 22,
+          "top": 64.62
+        }
+      },    
+      "hall5":{
+        "id": "hall5",
+        "type": "hall",
+        "position": {
+          "left": 22,
+          "top": 40
+        }
+      },    
+      "hall6":{
+        "id": "hall6",
+        "type": "hall",
+        "position": {
+          "left": 22,
+          "top": 18
+        }
+      },   
       "porteA": {
         "id": "porteA",
         "type": "door",
@@ -150,97 +197,97 @@
           "top": 79.5
         }
       },
-      "b": {
+      "porteB": {
         "type": "door",
-        "id": "porte B",
+        "id": "porteB",
         "position": {
           "left": 63.87,
           "top": 76.24
         }
       },
-      "c": {
+      "porteC": {
         "type": "door",
-        "id": "porte C",
+        "id": "porteC",
         "position": {
           "left": 64.47,
           "top": 39.5
         }
       },
-      "d": {
+      "porteD": {
         "type": "door",
-        "id": "porte D",
+        "id": "porteD",
         "position": {
           "left": 56.42,
           "top": 54.9
         }
       },
-      "e": {
+      "porteE": {
         "type": "door",
-        "id": "porte E",
+        "id": "porteE",
         "position": {
           "left": 47.55,
           "top": 40
         }
       },
-      "f": {
+      "porteF": {
         "type": "door",
-        "id": "porte F",
+        "id": "porteF",
         "position": {
           "left": 25.7,
           "top": 40
         }
       },
-      "g": {
+      "porteG": {
         "type": "door",
-        "id": "porte G",
+        "id": "porteG",
         "position": {
           "left": 39,
           "top": 54
         }
       },
-      "h": {
+      "porteH": {
         "type": "door",
-        "id": "porte H",
+        "id": "porteH",
         "position": {
           "left": 25.61,
           "top": 16.33
         }
       },
-      "i": {
+      "porteI": {
         "type": "door",
-        "id": "porte I",
+        "id": "porteI",
         "position": {
           "left": 20.13,
           "top": 15.86
         }
       },
-      "j": {
+      "porteJ": {
         "type": "door",
-        "id": "porte J",
+        "id": "porteJ",
         "position": {
           "left": 21.3,
           "top": 75
         }
       },
-      "k": {
+      "porteK": {
         "type": "door",
-        "id": "porte K",
+        "id": "porteK",
         "position": {
           "left": 12.9,
           "top": 77.7
         }
       },
-      "l": {
+      "porteL": {
         "type": "door",
-        "id": "porte L",
+        "id": "porteL",
         "position": {
           "left": 12.9,
           "top": 90.51
         }
       },
-      "m": {
+      "porteM": {
         "type": "door",
-        "id": "porte M",
+        "id": "porteM",
         "position": {
           "left": 7.76,
           "top": 79.32
@@ -251,6 +298,186 @@
       {
         "from": "SD352A",
         "to": "porteA",
+        "weight": 1
+      },
+      {
+        "from": "SD353",
+        "to": "porteA",
+        "weight": 1
+      },
+      {
+        "from": "SD353",
+        "to": "porteB",
+        "weight": 1
+      },
+      {
+        "from": "porteA",
+        "to": "porteB",
+        "weight": 1
+      },
+      {
+        "from": "porteB",
+        "to": "hall1",
+        "weight": 1
+      },
+      {
+        "from": "hall2",
+        "to": "hall1",
+        "weight": 1
+      },
+      {
+        "from": "hall2",
+        "to": "porteD",
+        "weight": 1
+      },
+      {
+        "from": "SD338",
+        "to": "porteD",
+        "weight": 1
+      },
+      {
+        "from": "SD338",
+        "to": "porteC",
+        "weight": 1
+      },
+      {
+        "from": "SD341",
+        "to": "porteC",
+        "weight": 1
+      },
+      {
+        "from": "porteD",
+        "to": "porteC",
+        "weight": 1
+      },
+      {
+        "from": "porteD",
+        "to": "porteE",
+        "weight": 1
+      },
+      {
+        "from": "porteC",
+        "to": "porteE",
+        "weight": 1
+      },
+      {
+        "from": "porteE",
+        "to": "SD335",
+        "weight": 1
+      },
+      {
+        "from": "porteE",
+        "to": "porteG",
+        "weight": 1
+      },
+      {
+        "from": "porteF",
+        "to": "porteG",
+        "weight": 1
+      },
+      {
+        "from": "porteF",
+        "to": "SD335",
+        "weight": 1
+      },
+      {
+        "from": "hall3",
+        "to": "porteG",
+        "weight": 1
+      },
+      {
+        "from": "hall3",
+        "to": "hall4",
+        "weight": 1
+      },
+      {
+        "from": "hall5",
+        "to": "hall4",
+        "weight": 1
+      },
+      {
+        "from": "hall5",
+        "to": "hall6",
+        "weight": 1
+      },
+      {
+        "from": "porteI",
+        "to": "hall6",
+        "weight": 1
+      },
+      {
+        "from": "porteI",
+        "to": "SD327",
+        "weight": 1
+      },
+      {
+        "from": "porteH",
+        "to": "hall6",
+        "weight": 1
+      },
+      {
+        "from": "porteH",
+        "to": "SD330",
+        "weight": 1
+      },
+      {
+        "from": "porteF",
+        "to": "hall5",
+        "weight": 1
+      },
+      {
+        "from": "hall2",
+        "to": "hall3",
+        "weight": 1
+      },
+      {
+        "from": "porteJ",
+        "to": "hall4",
+        "weight": 1
+      },
+      {
+        "from": "porteJ",
+        "to": "porteK",
+        "weight": 1
+      },
+      {
+        "from": "porteJ",
+        "to": "porteL",
+        "weight": 1
+      },
+      {
+        "from": "SD362",
+        "to": "porteK",
+        "weight": 1
+      },
+      {
+        "from": "SD362",
+        "to": "porteL",
+        "weight": 1
+      },
+      {
+        "from": "SD362",
+        "to": "porteJ",
+        "weight": 1
+      },
+      {
+        "from": "SD364",
+        "to": "porteL",
+        "weight": 1
+      },
+      {
+        "from": "SD364",
+        "to": "porteM",
+        "weight": 1
+      },
+      {
+        "from": "SD366",
+        "to": "porteM",
+        "weight": 1
+      },
+      {
+        "from": "SD366",
+        "to": "porteK",
         "weight": 1
       }
     ]
