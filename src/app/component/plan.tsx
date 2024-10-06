@@ -7,11 +7,14 @@ import CanvasPlan from "./canvasPlan"; // Assurez-vous que le chemin d'importati
 interface FloorPlanCanvasProps {
   canvasRef: ForwardedRef<HTMLCanvasElement>;
   onCanvasClick?: (event: React.MouseEvent<HTMLCanvasElement>) => void;
+  onCanvasResize?: (size: { width: number; height: number }) => void; // Callback pour la taille
+
 }
 
 const FloorPlanCanvas: React.FC<FloorPlanCanvasProps> = ({
   canvasRef,
   onCanvasClick,
+  onCanvasResize
 }) => {
   const imgRef = useRef<HTMLImageElement | null>(null);
   const [imgLoaded, setImgLoaded] = useState<boolean>(false);
@@ -63,6 +66,9 @@ const FloorPlanCanvas: React.FC<FloorPlanCanvasProps> = ({
         canvas.height = newHeight;
 
         setImgLoaded(true); // Indique que l'image est chargée
+        if (onCanvasResize) {
+          onCanvasResize({ width: newWidth, height: newHeight });
+        }
       }
     }
   };
