@@ -1,11 +1,11 @@
 import { canvaSizeInterface, drawLine } from "../functions/drawNode";
-import { EdgeInterface, Node } from "./data";
+import { EdgeInterface, NodeInterface } from "./data";
 
 export class Edge implements EdgeInterface {
-  from: Node;
-  to: Node;
+  from: NodeInterface;
+  to: NodeInterface;
   weight: number;
-  constructor(from: Node, to: Node, weight = 1) {
+  constructor(from: NodeInterface, to: NodeInterface, weight = 1) {
     this.from = from;
     this.to = to;
     this.weight = weight;

@@ -1,3 +1,4 @@
+import { canvaSizeInterface } from "../functions/drawNode";
 import { Classroom } from "./Classroom";
 import {
   ClassroomInterface,
@@ -14,7 +15,7 @@ import { Edge } from "./Edge";
 import { Hall } from "./Halll";
 
 export class Graph implements GraphInterface {
-  node: (ClassroomInterface | DoorInterface |HallInterface)[];
+  node: (ClassroomInterface | DoorInterface | HallInterface)[];
   edge: EdgeInterface[];
 
   constructor(json: GraphInterfaceRaw) {
@@ -23,7 +24,7 @@ export class Graph implements GraphInterface {
   }
 
   initNode(classroom: { [key: string]: rawNode }) {
-    const node: (ClassroomInterface | DoorInterface|HallInterface)[] = [];
+    const node: (ClassroomInterface | DoorInterface | HallInterface)[] = [];
     for (const currentNodeId in classroom) {
       const currentNode = classroom[currentNodeId];
       // Vérifier si currentNode a une taille définie
@@ -31,11 +32,11 @@ export class Graph implements GraphInterface {
         node.push(
           new Classroom(currentNode.id, currentNode.position, currentNode.size)
         );
-      } 
-      if (currentNode.type === 'door') {
+      }
+      if (currentNode.type === "door") {
         node.push(new Door(currentNode.id, currentNode.position));
       }
-      if (currentNode.type === 'hall') {
+      if (currentNode.type === "hall") {
         node.push(new Hall(currentNode.id, currentNode.position));
       }
     }
@@ -52,8 +53,23 @@ export class Graph implements GraphInterface {
           `Edge not found: from ${currentEdge.from} to ${currentEdge.to}`
         );
       }
-      edgesList.push(new Edge(from, to, currentEdge.weight));
+      const edge = new Edge(from, to, currentEdge.weight);
+      edgesList.push(edge);
+      from.addEdge(edge);
+      to.addEdge(edge);
     });
     return edgesList;
+  }
+
+  drawDebug(ctx: CanvasRenderingContext2D, canvasSize: canvaSizeInterface) {
+    this.node.forEach((currentNode) => {
+      if (currentNode.type === "classroom") {
+        currentNode.drawSize(ctx, canvasSize, true);
+      }
+      currentNode.drawPosition(ctx, canvasSize, true);
+    });
+    this.edge.forEach((element) => {
+      element.draw(ctx, canvasSize);
+    });
   }
 }

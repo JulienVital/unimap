@@ -1,4 +1,4 @@
-import { Node, SizeNode } from "@/app/data/data";
+import { NodeInterface, SizeNode } from "@/app/data/data";
 export interface canvaSizeInterface {
   width: number;
   height: number;
@@ -24,7 +24,7 @@ export const drawClassroom = (
 
 export const drawDoor = (
   ctx: CanvasRenderingContext2D,
-  node: Node,
+  node: NodeInterface,
   canvasSize: canvaSizeInterface,
   debug?: boolean
 ) => {
@@ -35,7 +35,7 @@ export const drawDoor = (
 
 export const drawRectangle = (
   ctx: CanvasRenderingContext2D,
-  node: Node,
+  node: NodeInterface,
   canvasSize: canvaSizeInterface,
   color: string,
   debug?: boolean
@@ -60,7 +60,7 @@ export const drawRectangle = (
 
 export const drawCircle = (
   ctx: CanvasRenderingContext2D,
-  node: Node,
+  node: NodeInterface,
   canvasSize: canvaSizeInterface,
   debug?: boolean
 ) => {
@@ -88,7 +88,7 @@ export const drawCircle = (
 
 export const drawSquare = (
   ctx: CanvasRenderingContext2D,
-  node: Node,
+  node: NodeInterface,
   canvasSize: canvaSizeInterface,
   color: string,
   debug?: boolean
@@ -118,8 +118,8 @@ export const drawSquare = (
 
 export const drawLine = (
   ctx: CanvasRenderingContext2D,
-  nodeFrom: Node,
-  nodeTo: Node,
+  nodeFrom: NodeInterface,
+  nodeTo: NodeInterface,
   canvasSize: canvaSizeInterface
 ) => {
   const leftFrom = nodeFrom.position.left * (canvasSize.width / 100);

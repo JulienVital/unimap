@@ -1,15 +1,15 @@
 import { canvaSizeInterface, drawCircle } from "../functions/drawNode";
 import { HallInterface, Position } from "./data";
+import { Node } from "./Node";
 
-export class Hall implements HallInterface {
+export class Hall extends Node implements HallInterface {
   type: "hall";
-  id: string;
-  position: Position;
+
   constructor(id: string, position: Position) {
-    this.type = "hall";
-    this.id = id;
-    this.position = position;
-  }
+    super(id, position); 
+  this.type = "hall";
+}
+
 
   drawPosition = (
     ctx: CanvasRenderingContext2D,

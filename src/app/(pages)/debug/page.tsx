@@ -31,15 +31,10 @@ export default function DebugPage() {
     canvasSize: canvaSizeInterface
   ) => {
     const graph = new Graph(graphJson as GraphInterfaceRaw)
-    graph.node.forEach((currentNode)=>{
-      if(currentNode.type === "classroom"){
-        currentNode.drawSize(ctx,canvasSize, true )
-      }
-      currentNode.drawPosition(ctx,canvasSize, true )
-    })
-      graph.edge.forEach(element => {
-        element.draw(ctx, canvasSize)
-      });
+    graph.drawDebug(
+      ctx,
+      canvasSize
+    )
   };
   // Gestionnaire d'événement de clic
   const handleCanvasClickInternal = (

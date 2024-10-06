@@ -1,14 +1,12 @@
 import { canvaSizeInterface, drawSquare } from "../functions/drawNode";
 import { DoorInterface, Position } from "./data";
+import { Node } from "./Node";
 
-export class Door implements DoorInterface {
+export class Door extends Node implements DoorInterface {
   type: "door";
-  id: string;
-  position: Position;
   constructor(id: string, position: Position) {
+      super(id, position); 
     this.type = "door";
-    this.id = id;
-    this.position = position;
   }
 
   drawPosition = (
