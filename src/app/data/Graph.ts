@@ -56,7 +56,7 @@ export class Graph implements GraphInterface {
       const edge = new Edge(from, to, currentEdge.weight);
       edgesList.push(edge);
       from.addEdge(edge);
-      to.addEdge(edge);
+      to.addEdge(edge.swap());
     });
     return edgesList;
   }

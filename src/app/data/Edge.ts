@@ -16,4 +16,7 @@ export class Edge implements EdgeInterface {
   ) => {
     drawLine(ctx, this.from, this.to, canvasSize);
   };
+  swap = ()=>{
+    return new Edge(this.to, this.from)
+  }
 }
