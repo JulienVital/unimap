@@ -1,5 +1,5 @@
 import { Node, SizeNode } from "@/app/data/data";
-interface canvaSizeInterface {
+export interface canvaSizeInterface {
   width: number;
   height: number;
 }
@@ -33,26 +33,29 @@ export const drawDoor = (
   drawRectangle(ctx, node, canvasSize, doorColor,debug);
 };
 
-const drawRectangle = (
+export const drawRectangle = (
   ctx: CanvasRenderingContext2D,
   node: Node,
   canvasSize: canvaSizeInterface,
   color: string,
   debug?: boolean
 ) => {
-  const left = (node.size.left / 100) * canvasSize.width;
-  const top = (node.size.top / 100) * canvasSize.height;
-  const width = (node.size.width / 100) * canvasSize.width;
-  const height = (node.size.height / 100) * canvasSize.height;
-  ctx.beginPath();
-  ctx.rect(left, top, width, height);
-  ctx.fillStyle = color;
-  ctx.fill();
-  if (debug) {
-    ctx.fillStyle = "white";
-    ctx.font = " 8px Helvetica"; // Appliquer le style en gras
+  if(node.size){
 
-    ctx.fillText(node.id, left + width / 2, top + height / 2);
+    const left = (node.size.left / 100) * canvasSize.width;
+    const top = (node.size.top / 100) * canvasSize.height;
+    const width = (node.size.width / 100) * canvasSize.width;
+    const height = (node.size.height / 100) * canvasSize.height;
+    ctx.beginPath();
+    ctx.rect(left, top, width, height);
+    ctx.fillStyle = color;
+    ctx.fill();
+    if (debug) {
+      ctx.fillStyle = "white";
+      ctx.font = " 8px Helvetica"; // Appliquer le style en gras
+      
+      ctx.fillText(node.id, left + width / 2, top + height / 2);
+    }
   }
 };
 
@@ -88,6 +91,7 @@ export const drawSquare = (
   ctx: CanvasRenderingContext2D,
   node: Node,
   canvasSize: canvaSizeInterface,
+  color : string,
   debug?: boolean
 ) => {
   // Calculer les positions en fonction de la taille du canevas
@@ -100,7 +104,7 @@ export const drawSquare = (
   const squareTop = top - halfSize;
 
   // Dessiner le carré
-  ctx.fillStyle = "rgba(0, 200, 0)"; // Couleur de remplissage
+  ctx.fillStyle = color
   ctx.fillRect(squareLeft, squareTop, squareSize*2, squareSize); // Remplit le carré
 
   // Si le mode debug est activé
@@ -112,10 +116,3 @@ export const drawSquare = (
     ctx.fillText(node.id, left+8, top); // Dessine le texte centré sur la position
   }
 };
-
-export const draw = (  ctx: CanvasRenderingContext2D,
-  node: Node,
-  canvasSize: canvaSizeInterface,
-  debug?: boolean)=>{
-
-}

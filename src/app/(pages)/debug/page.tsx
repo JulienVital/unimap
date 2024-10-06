@@ -1,13 +1,9 @@
 "use client";
 import Plan from "@/app/component/plan";
-import { graph } from "@/app/data/data";
+import { GraphInterfaceRaw } from "@/app/data/data";
+import graphJson from "@/app/data/data.json";
+import { Graph } from "@/app/data/Graph";
 import { handleCanvasClick } from "@/app/functions/debug/utils";
-import {
-  drawDoor,
-  drawClassroom,
-  drawCircle,
-  drawSquare,
-} from "@/app/functions/drawNode";
 
 import { useEffect, useRef, useState } from "react";
 export default function DebugPage() {
@@ -20,8 +16,7 @@ export default function DebugPage() {
     width: 0,
     height: 0,
   });
-  const sleep = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
+
 
   useEffect(() => {
     if (canvasRef.current && canvasSize) {
@@ -35,15 +30,14 @@ export default function DebugPage() {
     ctx: CanvasRenderingContext2D,
     canvasSize: canvaSizeInterface
   ) => {
-    console.log("draw");
-    for (const currentNode in graph.node) {
-      drawClassroom(ctx, graph.node[currentNode].size, canvasSize);
-      // await sleep(500);
-      drawCircle(ctx, graph.node[currentNode], canvasSize, true);
-    }
-    for (const currentNode in graph.door) {
-      drawSquare(ctx, graph.door[currentNode], canvasSize, true);
-    }
+    const graph = new Graph(graphJson as GraphInterfaceRaw)
+    graph.node.forEach((currentNode)=>{
+      if(currentNode.type === "classroom"){
+        currentNode.drawSize(ctx,canvasSize, true )
+      }
+      currentNode.drawPosition(ctx,canvasSize, true )
+    })
+
   };
   // Gestionnaire d'événement de clic
   const handleCanvasClickInternal = (
