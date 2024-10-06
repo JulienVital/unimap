@@ -1,6 +1,19 @@
 {
     "node": {
-
+      "SD331": {
+        "type": "classroom",
+        "position": {
+          "top": 32.37,
+          "left": 32.79
+        },
+        "id": "SD331",
+        "size": {
+          "top": 28.52,
+          "left": 29.37,
+          "height":  8.78,
+          "width": 6.93
+        }
+      },
       "SD327": {
         "type": "classroom",
         "position": {
@@ -139,6 +152,20 @@
           "left": 76,
           "width": 7,
           "height": 23.5
+        }
+      },
+      "SD332": {
+        "type": "classroom",
+        "position": {
+          "left": 27.27,
+          "top": 33
+        },
+        "id": "SD332",
+        "size": {
+          "top": 28,
+          "left": 26,
+          "width": 3,
+          "height": 10
         }
       },
       "hall1":{
@@ -292,7 +319,32 @@
           "left": 7.76,
           "top": 79.32
         }
+      },
+      "porteN": {
+        "type": "door",
+        "id": "porteN",
+        "position": {
+          "left": 28,
+          "top": 38
+        }
+      },
+      "porteO": {
+        "type": "door",
+        "id": "porteO",
+        "position": {
+          "top": 27.82,
+          "left": 35.15
+        }
+      },
+      "porteP": {
+        "type": "door",
+        "id": "porteP",
+        "position": {
+          "top": 37.27,
+          "left": 35.41
+        }
       }
+
     },
     "edges":[
       {
@@ -478,6 +530,56 @@
       {
         "from": "SD366",
         "to": "porteK",
+        "weight": 1
+      },
+      {
+        "from": "porteF",
+        "to": "porteN",
+        "weight": 1
+      },
+      {
+        "from": "porteE",
+        "to": "porteN",
+        "weight": 1
+      },
+      {
+        "from": "porteG",
+        "to": "porteN",
+        "weight": 1
+      },
+      {
+        "from": "SD335",
+        "to": "porteN",
+        "weight": 1
+      },
+      {
+        "from": "SD332",
+        "to": "porteN",
+        "weight": 1
+      },
+      {
+        "from": "porteP",
+        "to": "porteN",
+        "weight": 1
+      },
+      {
+        "from": "porteP",
+        "to": "SD331",
+        "weight": 1
+      },
+      {
+        "from": "porteO",
+        "to": "SD331",
+        "weight": 1
+      },
+      {
+        "from": "porteO",
+        "to": "SD330",
+        "weight": 1
+      },
+      {
+        "from": "porteP",
+        "to": "SD335",
         "weight": 1
       }
     ]
