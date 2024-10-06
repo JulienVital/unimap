@@ -72,4 +72,7 @@ export class Graph implements GraphInterface {
       element.draw(ctx, canvasSize);
     });
   }
+  getClassroomOnly(){
+    return this.node.filter(classroom=>classroom.type ==="classroom")
+  }
 }
