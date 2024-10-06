@@ -168,6 +168,62 @@
           "height": 10
         }
       },
+      "SD342": {
+        "type": "classroom",
+        "position": {
+          "top": 43.19,
+          "left": 72.62
+        },
+        "id": "SD342",
+        "size": {
+          "top": 37.91,
+          "left": 69.03,
+          "height": 11.5,
+          "width": 7
+        }
+      },
+      "SD343": {
+        "type": "classroom",
+        "position": {
+          "top": 42.00,
+          "left": 79.43
+        },
+        "id": "SD343",
+        "size": {
+          "top": 37.80,
+          "left": 76.15,
+          "height": 9.2,
+          "width": 6.5
+        }
+      },
+      "SD344": {
+        "type": "classroom",
+        "position": {
+          "top": 48,
+          "left": 80.09
+        },
+        "id": "SD344",
+        "size": {
+          "top": 47.26,
+          "left": 76.02,
+          "height": 2,
+          "width": 6.5
+        }
+      },
+      "SD345": {
+        "type": "classroom",
+        "position": {
+          "top": 55.84,
+          "left": 79.83
+        },
+        "id": "SD345",
+        "size": {
+          "top": 50.41,
+          "left": 75.76,
+          "height": 10,
+          "width": 7
+        }
+      },
       "hall1":{
         "id": "hall1",
         "type": "hall",
@@ -214,6 +270,14 @@
         "position": {
           "left": 22,
           "top": 18
+        }
+      },   
+      "hall7":{
+        "id": "hall7",
+        "type": "hall",
+        "position": {
+          "top": 64.42,
+          "left": 79.96
         }
       },   
       "porteA": {
@@ -342,6 +406,46 @@
         "position": {
           "top": 37.27,
           "left": 35.41
+        }
+      },
+      "porteQ": {
+        "type": "door",
+        "id": "porteQ",
+        "position": {
+          "top": 47.08,
+          "left": 68.53
+        }
+      },
+      "porteR": {
+        "type": "door",
+        "id": "porteR",
+        "position": {
+          "top": 47.96,
+          "left": 75.89
+        }
+      },
+      "porteS": {
+        "type": "door",
+        "id": "porteS",
+        "position": {
+          "top": 46.56,
+          "left": 81.80
+        }
+      },
+      "porteT": {
+        "type": "door",
+        "id": "porteT",
+        "position": {
+          "top": 49.71,
+          "left": 81.41
+        }
+      },
+      "porteU": {
+        "type": "door",
+        "id": "porteU",
+        "position": {
+          "top": 60.22,
+          "left": 80.09
         }
       }
 
@@ -595,6 +699,86 @@
       {
         "from": "SD335",
         "to": "porteG",
+        "weight": 1
+      },
+      {
+        "from": "porteU",
+        "to": "hall7",
+        "weight": 1
+      },
+      {
+        "from": "hall1",
+        "to": "hall7",
+        "weight": 1
+      },
+      {
+        "from": "porteU",
+        "to": "SD345",
+        "weight": 1
+      },
+      {
+        "from": "porteT",
+        "to": "SD345",
+        "weight": 1
+      },
+      {
+        "from": "porteT",
+        "to": "SD344",
+        "weight": 1
+      },
+      {
+        "from": "porteS",
+        "to": "SD344",
+        "weight": 1
+      },
+      {
+        "from": "porteR",
+        "to": "SD344",
+        "weight": 1
+      },
+      {
+        "from": "porteR",
+        "to": "porteT",
+        "weight": 1
+      },
+      {
+        "from": "porteR",
+        "to": "porteS",
+        "weight": 1
+      },
+      {
+        "from": "porteT",
+        "to": "porteS",
+        "weight": 1
+      },
+      {
+        "from": "SD343",
+        "to": "porteS",
+        "weight": 1
+      },
+      {
+        "from": "porteQ",
+        "to": "porteR",
+        "weight": 1
+      },
+      {
+        "from": "porteQ",
+        "to": "porteC",
+        "weight": 1
+      },
+      {
+        "from": "porteQ",
+        "to": "SD341",
+        "weight": 1
+      },
+      {
+        "from": "porteQ",
+        "to": "SD342",
+        "weight": 1
+      },
+      {
+        "from": "porteR",
+        "to": "SD342",
         "weight": 1
       }
     ]
