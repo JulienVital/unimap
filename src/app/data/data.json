@@ -591,6 +591,11 @@
         "from": "SD338",
         "to": "porteE",
         "weight": 1
+      },
+      {
+        "from": "SD335",
+        "to": "porteG",
+        "weight": 1
       }
     ]
   }
