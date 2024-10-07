@@ -1,6 +1,6 @@
 // /app/components/CanvasPlan.tsx
 "use client";
-import React, { forwardRef, useEffect } from "react";
+import React, { forwardRef } from "react";
 
 interface CanvasPlanProps
   extends React.CanvasHTMLAttributes<HTMLCanvasElement> {
