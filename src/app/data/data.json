@@ -780,6 +780,11 @@
         "from": "porteR",
         "to": "SD342",
         "weight": 1
+      },
+      {
+        "from": "porteP",
+        "to": "porteF",
+        "weight": 1
       }
     ]
   }
