@@ -52,7 +52,7 @@ export default function Home() {
       // Parcourir les arêtes trouvées et les dessiner une par une avec un délai
       const start = graph.node.find(classroom => classroom.id == startId);
       if (start?.type === "classroom") {
-        start.drawSize(ctx, canvasSize);
+        start.drawSize(ctx, canvasSize,'rgba(255, 120, 0, 0.51)');
       }
       for (const edge of finded) {
         edge.draw(ctx, canvasSize);

@@ -64,7 +64,7 @@ export class Graph implements GraphInterface {
   drawDebug(ctx: CanvasRenderingContext2D, canvasSize: canvaSizeInterface) {
     this.node.forEach((currentNode) => {
       if (currentNode.type === "classroom") {
-        currentNode.drawSize(ctx, canvasSize, true);
+        currentNode.drawSize(ctx, canvasSize, "rgba(255, 120, 0, 0.51)",true);
       }
       currentNode.drawPosition(ctx, canvasSize, true);
     });

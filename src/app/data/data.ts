@@ -31,6 +31,7 @@ export interface ClassroomInterface extends NodeInterface {
   drawSize : (
     ctx: CanvasRenderingContext2D,
     canvasSize: canvaSizeInterface,
+    color?:string,
     debug?: boolean
   )=>void
 }

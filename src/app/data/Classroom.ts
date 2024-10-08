@@ -24,8 +24,10 @@ export class Classroom extends Node implements ClassroomInterface {
   };
   drawSize = (
     ctx: CanvasRenderingContext2D,
-    canvasSize: canvaSizeInterface
+    canvasSize: canvaSizeInterface,
+    color?: string
   ) => {
-    drawClassroom(ctx, this.size, canvasSize);
+    console.log(color)
+    drawClassroom(ctx, this.size, canvasSize, color);
   };
 }

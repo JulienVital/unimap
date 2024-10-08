@@ -7,15 +7,19 @@ export interface canvaSizeInterface {
 export const drawClassroom = (
   ctx: CanvasRenderingContext2D,
   size: SizeNode,
-  canvasSize: canvaSizeInterface
+  canvasSize: canvaSizeInterface,
+  color?: string
 ) => {
+  if(!color){
+    color = "rgba(0, 0, 255, 0.5)";
+  }
   const left = (size.left / 100) * canvasSize.width;
   const top = (size.top / 100) * canvasSize.height;
   const width = (size.width / 100) * canvasSize.width;
   const height = (size.height / 100) * canvasSize.height;
   ctx.beginPath();
   ctx.rect(left, top, width, height);
-  ctx.fillStyle = "rgba(0, 0, 255, 0.5)";
+  ctx.fillStyle = color;
   ctx.fill();
   ctx.strokeStyle = "black";
   ctx.lineWidth = 1;
