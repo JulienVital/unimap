@@ -131,6 +131,6 @@ export const drawLine = (
   const topTo = nodeTo.position.top * (canvasSize.height / 100); // Correction ici
   ctx.lineTo(leftTo, topTo); // Point B
   ctx.strokeStyle = "red"; // Couleur du tracé
-  ctx.lineWidth = 1; // Épaisseur du trait
+  ctx.lineWidth = 3; // Épaisseur du trait
   ctx.stroke();
 };
